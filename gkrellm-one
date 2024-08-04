@@ -1,0 +1,8 @@
+COMMAND_NAME="gkrellm-one.sh"
+ARGS_FILE="${HOME}/bin/gkrellm_hosts.txt"
+_gkrellm_one_autocomplete() {
+  local current_word="${COMP_WORDS[COMP_CWORD]}"
+  local suggestions=$(cat "${ARGS_FILE}")
+  COMPREPLY=($(compgen -W "${suggestions}" -- "${current_word}"))
+}
+complete -F _gkrellm_one_autocomplete ${COMMAND_NAME}

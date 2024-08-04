@@ -1,0 +1,8 @@
+COMMAND_NAME="boinc-get_gpu_info-one.sh"
+ARGS_FILE="${HOME}/bin/boinc_hosts.txt"
+_boinc_get_gpu_info_one_autocomplete() {
+  local current_word="${COMP_WORDS[COMP_CWORD]}"
+  local suggestions=$(cat "${ARGS_FILE}")
+  COMPREPLY=($(compgen -W "${suggestions}" -- "${current_word}"))
+}
+complete -F _boinc_get_gpu_info_one_autocomplete ${COMMAND_NAME}
